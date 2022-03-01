@@ -83,14 +83,14 @@ public class FileOperationService {
     }
 
     private GenericData.Record createGenericRecord(String record, Schema schema) {
-        GenericData.Record gRecord = new GenericData.Record(schema);
+        GenericData.Record genericDataRecord = new GenericData.Record(schema);
         AtomicInteger count = new AtomicInteger(1);
         String[] recordSplit = record.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
-        Arrays.asList(recordSplit).stream().forEach(s -> gRecord.put("col" + count.getAndIncrement(), s));
-        return gRecord;
+        Arrays.asList(recordSplit).stream().forEach(s -> genericDataRecord.put("col" + count.getAndIncrement(), s));
+        return genericDataRecord;
     }
 
-    private void writeGenericRecordsToFile(List<GenericData.Record> recordsToWrite, org.apache.hadoop.fs.Path fileToWrite, Schema schema, String fileName) {
+    private void writeGenericRecordsToFile(List<GenericData.Record> genericRecords, org.apache.hadoop.fs.Path fileToWrite, Schema schema, String fileName) {
         try (ParquetWriter<GenericData.Record> writer = AvroParquetWriter
                 .<GenericData.Record>builder(fileToWrite)
                 .withSchema(schema)
@@ -98,7 +98,7 @@ public class FileOperationService {
                 .withCompressionCodec(CompressionCodecName.SNAPPY)
                 .build()) {
 
-            for (GenericData.Record record : recordsToWrite) {
+            for (GenericData.Record record : genericRecords) {
                 writer.write(record);
             }
         } catch (IOException exception) {
