@@ -40,7 +40,7 @@ public class ExtractZipFileService {
             }
         } catch (IOException exception) {
             exception.printStackTrace();
-            logger.error("Deleting Zip File: " + fileName + " Failed.");
+            logger.error("Unzip Zip File: " + fileName + " Failed.");
         } finally {
             logger.info("Deleting Zip File: " + fileName);
             cleanUpService.cleanUp(downloadDir, fileName);
