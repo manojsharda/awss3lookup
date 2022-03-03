@@ -7,12 +7,17 @@
 * Prerequisites for running the application:
 * Java 8 is installed on the machine.
 * Download the code from GitHub: git@github.com:manojsharda/awss3lookup.git
-* Update application.properties(under resources folder) file with your AWS S3 bucket details:
+* Update application.properties(under resources folder) file with following details:
 * cloud.aws.credentials.accessKey
 * cloud.aws.credentials.secretKey
 * cloud.aws.region.static
 * application.bucket.name
-* build the code using gradle or if you are using IDE like IntelliJ run the application by running the AWSs3lookupApplication which is the Main class after building the project.
+* application.source.file.path= [Complete Local Directory Path where zip file will be downloaded]
+* application.csv.file.path= [Complete Local Directory Path where zip file will be extracted for CSV files]
+* application.csv.file.lookupString=[Search String]
+* application.parquet.file.path=[Complete Local Directory Path where generated parquet files will be stored]
+* build the code using gradle bootJar this will create executable jar which can be executed via java -jar awss3lookup-0.0.1-SNAPSHOT.jar 
+* or if you are using IDE like IntelliJ run the application by running the AWSs3lookupApplication which is the Main class after building the project.
 * References links:
 * https://www.techgeeknext.com/cloud/aws/amazon-s3-springboot-download-file-in-s3-bucket
 * https://parquet.apache.org/documentation/latest/

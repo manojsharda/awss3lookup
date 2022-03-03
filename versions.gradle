@@ -1,0 +1,7 @@
+ext {
+    springBootVersion = '2.6.4'
+    springDependencyManagementVersion = '1.0.11.RELEASE'
+    awsJavasdks3Version = '1.12.167'
+    apacheParquetAvroVersion = '1.12.0'
+    apacheHadoopCoreVersion = '1.2.1'
+}

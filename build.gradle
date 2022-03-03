@@ -1,6 +1,10 @@
+buildscript {
+	apply from: file('versions.gradle')
+}
+
 plugins {
-	id 'org.springframework.boot' version '2.6.4'
-	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'org.springframework.boot' version "${springBootVersion}"
+	id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
 	id 'java'
 }
 
@@ -14,9 +18,9 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: '1.12.167'
-	implementation group: 'org.apache.parquet', name: 'parquet-avro', version: '1.12.0'
-	implementation group: 'org.apache.hadoop', name: 'hadoop-core', version: '1.2.1'
+	implementation group: 'com.amazonaws', name: 'aws-java-sdk-s3', version: "${awsJavasdks3Version}"
+	implementation group: 'org.apache.parquet', name: 'parquet-avro', version: "${apacheParquetAvroVersion}"
+	implementation group: 'org.apache.hadoop', name: 'hadoop-core', version: "${apacheHadoopCoreVersion}"
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
